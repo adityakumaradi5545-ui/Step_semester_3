@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bcf2317-5177-45cc-abb6-5b37ff39d08e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/class_assignments/question_1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/class_assignments/question_2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/class_assignments/question_3.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/class_problems/question_1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/class_problems/question_2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/class_problems/question_3.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/class_problems/question_4.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/class_problems/question_5.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +59,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "feature/session__2",
+    "git-widget-placeholder": "feature/session__3",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "onboarding.tips.debug.path": "C:/Users/adity/IdeaProjects/Step_semester_3/src/main/java/org/example/Main.java",
