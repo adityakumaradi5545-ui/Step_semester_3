@@ -1,3 +1,5 @@
+package class_problem;
+
 public class question4 {
         static double rowAverage(int[] row) {
             int sum = 0;

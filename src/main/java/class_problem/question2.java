@@ -1,4 +1,5 @@
-import java.util.Arrays;
+package class_problem;
+
 public class question2 {
 
         static String findDuplicateTeam(String[] names) {

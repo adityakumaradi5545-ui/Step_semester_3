@@ -1,3 +1,5 @@
+package class_problem;
+
 import java.util.Arrays;
 public class question1 {
 
