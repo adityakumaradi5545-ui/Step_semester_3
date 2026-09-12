@@ -5,14 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bcf2317-5177-45cc-abb6-5b37ff39d08e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/class_assignments/question_1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/class_assignments/question_2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/class_assignments/question_3.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/class_problems/question_1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/class_problems/question_2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/class_problems/question_3.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/class_problems/question_4.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/class_problems/question_5.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/class_assignment/question1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/class_assignment/question2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/class_assignment/question3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/class_assignments/question_1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/class_assignments/question_2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/class_assignments/question_3.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/class_assignments/question_4.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/class_assignments/question_5.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/class_problems/question_1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/class_problems/question_2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/class_problems/question_3.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/class_problems/question_4.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/class_problems/question_5.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,37 +57,59 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.lvl1q1.executor": "Run",
-    "Application.lvl1q2.executor": "Run",
-    "Application.lvl2q3.executor": "Run",
-    "Application.lvl2q5.executor": "Run",
-    "Application.lvl3q3.executor": "Run",
-    "Application.question2.executor": "Run",
-    "Application.question3.executor": "Run",
-    "Application.question4.executor": "Run",
-    "Application.question5.executor": "Run",
-    "Application.question_1.executor": "Run",
-    "Application.question_2.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "feature/session__2",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "onboarding.tips.debug.path": "C:/Users/adity/IdeaProjects/Step_semester_3/src/main/java/org/example/Main.java",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.lvl1q1.executor&quot;: &quot;Run&quot;,
+    &quot;Application.lvl1q2.executor&quot;: &quot;Run&quot;,
+    &quot;Application.lvl2q3.executor&quot;: &quot;Run&quot;,
+    &quot;Application.lvl2q5.executor&quot;: &quot;Run&quot;,
+    &quot;Application.lvl3q3.executor&quot;: &quot;Run&quot;,
+    &quot;Application.question2.executor&quot;: &quot;Run&quot;,
+    &quot;Application.question3.executor&quot;: &quot;Run&quot;,
+    &quot;Application.question4.executor&quot;: &quot;Run&quot;,
+    &quot;Application.question5.executor&quot;: &quot;Run&quot;,
+    &quot;Application.question_1.executor&quot;: &quot;Run&quot;,
+    &quot;Application.question_2.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/session__1&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/adity/IdeaProjects/Step_semester_3/src/main/java/org/example/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
   }
-}]]></component>
+}</component>
+  <component name="RunManager">
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.31033.145" />
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.33813.55" />
       </set>
     </attachedChunks>
   </component>
