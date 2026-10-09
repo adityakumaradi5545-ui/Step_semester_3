@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bcf2317-5177-45cc-abb6-5b37ff39d08e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/assignment_problem/question1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/assignment_problem/question2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/assignment_problem/question3.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/class_problems" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/question1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/question2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/question3.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/question4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_12_2026_1_37_AM_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_12_2026_1_37_AM__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,35 +44,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.assignment_problem.question1.executor": "Run",
-    "Application.lvl1q1.executor": "Run",
-    "Application.lvl1q2.executor": "Run",
-    "Application.lvl2q3.executor": "Run",
-    "Application.lvl2q5.executor": "Run",
-    "Application.lvl3q3.executor": "Run",
-    "Application.question1.executor": "Run",
-    "Application.question2.executor": "Run",
-    "Application.question3.executor": "Run",
-    "Application.question4.executor": "Run",
-    "Application.question5.executor": "Run",
-    "Application.question_1.executor": "Run",
-    "Application.question_2.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "feature/session__3",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "onboarding.tips.debug.path": "C:/Users/adity/IdeaProjects/Step_semester_3/src/Main.java",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.assignment_problem.question1.executor&quot;: &quot;Run&quot;,
+    &quot;Application.lvl1q1.executor&quot;: &quot;Run&quot;,
+    &quot;Application.lvl1q2.executor&quot;: &quot;Run&quot;,
+    &quot;Application.lvl2q3.executor&quot;: &quot;Run&quot;,
+    &quot;Application.lvl2q5.executor&quot;: &quot;Run&quot;,
+    &quot;Application.lvl3q3.executor&quot;: &quot;Run&quot;,
+    &quot;Application.question1.executor&quot;: &quot;Run&quot;,
+    &quot;Application.question2.executor&quot;: &quot;Run&quot;,
+    &quot;Application.question3.executor&quot;: &quot;Run&quot;,
+    &quot;Application.question4.executor&quot;: &quot;Run&quot;,
+    &quot;Application.question5.executor&quot;: &quot;Run&quot;,
+    &quot;Application.question_1.executor&quot;: &quot;Run&quot;,
+    &quot;Application.question_2.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;#6 on feature/session__5&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/adity/IdeaProjects/Step_semester_3/src/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.question5">
     <configuration name="assignment_problem.question1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="assignment_problem.question1" />
@@ -119,7 +114,7 @@
       </method>
     </configuration>
     <configuration name="question4" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="question4" />
+      <option name="MAIN_CLASS_NAME" value="class_problem.question4" />
       <module name="Step_semester_3" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -137,50 +132,6 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <option name="filePath" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="" />
-      <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="Tox" factoryName="Tox">
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="RUN_TOOL" value="" />
-      <method v="2" />
     </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
       <option name="ENV_FILES" value="" />
