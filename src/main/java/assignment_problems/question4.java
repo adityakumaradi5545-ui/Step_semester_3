@@ -1,40 +1,92 @@
 package assignment_problems;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.Scanner;
+
 public class question4 {
-}
-class TrafficLight {
-    private static final String[] CYCLE = {"RED", "GREEN", "YELLOW"};
 
-    private final String id;       // fixed at creation
-    private int position = 0;      // index into CYCLE; starts on RED
+    static abstract class Employee {
+        private final String name;
+        protected final double monthlySalary;
 
-    public TrafficLight(String id) {
-        this.id = id;
+        Employee(String name, double monthlySalary) {
+            this.name = name;
+            this.monthlySalary = monthlySalary;
+        }
+
+        String getName() {
+            return name;
+        }
+
+        abstract double calculateBonus();
     }
 
-    // The only way to change the color: move forward one step in the cycle
-    public String next() {
-        position = (position + 1) % CYCLE.length;
-        return CYCLE[position];
+    static class FullTimeEmployee extends Employee {
+        FullTimeEmployee(String name, double monthlySalary) {
+            super(name, monthlySalary);
+        }
+
+        @Override
+        double calculateBonus() {
+            return monthlySalary * 0.10;
+        }
     }
 
-    public String getColor() {
-        return CYCLE[position];
+    static class PartTimeEmployee extends Employee {
+        PartTimeEmployee(String name, double monthlySalary) {
+            super(name, monthlySalary);
+        }
+
+        @Override
+        double calculateBonus() {
+            return monthlySalary * 0.05;
+        }
     }
 
-    public String getId() {
-        return id;
-    }
-}
+    static class Intern extends Employee {
+        Intern(String name, double monthlySalary) {
+            super(name, monthlySalary);
+        }
 
- class A4_TrafficLight {
+        @Override
+        double calculateBonus() {
+            return 2000.0;   // fixed, whatever the salary
+        }
+    }
+
+    static Employee createEmployee(String type, String name, double monthlySalary) {
+        switch (type) {
+            case "FULLTIME":
+                return new FullTimeEmployee(name, monthlySalary);
+            case "PARTTIME":
+                return new PartTimeEmployee(name, monthlySalary);
+            case "INTERN":
+                return new Intern(name, monthlySalary);
+            default:
+                throw new IllegalArgumentException("Unknown employee type: " + type);
+        }
+    }
+
     public static void main(String[] args) {
-        TrafficLight t = new TrafficLight("TL-9");
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
 
-        System.out.println("getColor() -> " + t.getColor());
-        System.out.println("next() -> " + t.next());
-        System.out.println("next() -> " + t.next());
-        System.out.println("next() -> " + t.next());
-        System.out.println("next() -> " + t.next());
+        List<Employee> employees = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            String type = sc.next();
+            String name = sc.next();
+            double salary = sc.nextDouble();
+            employees.add(createEmployee(type, name, salary));
+        }
+
+        double grandTotal = 0;
+        for (Employee e : employees) {
+            double bonus = e.calculateBonus();   // polymorphic call
+            System.out.println(String.format(Locale.US, "%s: %.2f", e.getName(), bonus));
+            grandTotal += bonus;
+        }
+        System.out.println(String.format(Locale.US, "Total Bonus: %.2f", grandTotal));
     }
 }

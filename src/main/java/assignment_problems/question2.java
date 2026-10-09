@@ -1,50 +1,91 @@
 package assignment_problems;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.Scanner;
 
 public class question2 {
-}
 
+    static abstract class Vehicle {
+        private final String type;
+        protected final int hours;
 
-class Playlist {
-    private final String[] songs;   // private storage, never handed out directly
-    private int count = 0;
-
-    public Playlist(int maxSize) {
-        this.songs = new String[maxSize];
-    }
-
-    public void addSong(String title) {
-        if (count >= songs.length) {
-            System.out.println("Cannot add \"" + title + "\": playlist is full");
-            return;
+        Vehicle(String type, int hours) {
+            this.type = type;
+            this.hours = hours;
         }
-        songs[count] = title;
-        count++;
+
+        String getType() {
+            return type;
+        }
+
+        abstract double calculateCharge();
     }
 
-    // Returns a brand new array holding only the songs added so far
-    public String[] getSongs() {
-        return Arrays.copyOf(songs, count);
+    static class Bike extends Vehicle {
+        Bike(int hours) {
+            super("BIKE", hours);
+        }
+
+        @Override
+        double calculateCharge() {
+            return 10.0 * hours;
+        }
     }
 
-    public int getSongCount() {
-        return count;
-    }
-}
+    static class Car extends Vehicle {
+        Car(int hours) {
+            super("CAR", hours);
+        }
 
- class A2_Playlist {
+        @Override
+        double calculateCharge() {
+            return 30.0 + 20.0 * (hours - 1);
+        }
+    }
+
+    static class Truck extends Vehicle {
+        Truck(int hours) {
+            super("TRUCK", hours);
+        }
+
+        @Override
+        double calculateCharge() {
+            return Math.max(50.0 * hours, 100.0);
+        }
+    }
+
+    static Vehicle createVehicle(String type, int hours) {
+        switch (type) {
+            case "BIKE":
+                return new Bike(hours);
+            case "CAR":
+                return new Car(hours);
+            case "TRUCK":
+                return new Truck(hours);
+            default:
+                throw new IllegalArgumentException("Unknown vehicle type: " + type);
+        }
+    }
+
     public static void main(String[] args) {
-        Playlist p = new Playlist(10);
-        p.addSong("Song A");
-        p.addSong("Song B");
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
 
-        String[] copy = p.getSongs();
-        copy[0] = "Hacked";   // changes only the copy
+        List<Vehicle> vehicles = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            String type = sc.next();
+            int hours = sc.nextInt();
+            vehicles.add(createVehicle(type, hours));
+        }
 
-        System.out.println("Copy after tampering: " + Arrays.toString(copy));
-        System.out.println("Playlist still holds: " + Arrays.toString(p.getSongs()));
-        System.out.println("getSongs()[0] = " + p.getSongs()[0]);
-        System.out.println("getSongCount() = " + p.getSongCount());
+        double grandTotal = 0;
+        for (Vehicle v : vehicles) {
+            double charge = v.calculateCharge();   // polymorphic call
+            System.out.println(String.format(Locale.US, "%s: %.2f", v.getType(), charge));
+            grandTotal += charge;
+        }
+        System.out.println(String.format(Locale.US, "Total: %.2f", grandTotal));
     }
 }

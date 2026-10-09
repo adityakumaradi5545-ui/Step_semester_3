@@ -1,57 +1,91 @@
 package class_problems;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.Scanner;
+
 public class question1 {
-}
-class PiggyBank {
-    private final String id;      // fixed the moment the object is created
-    private double savings;       // never exposed for direct setting
 
-    public PiggyBank(String id) {
-        this.id = id;
-        this.savings = 0;
-    }
+    static abstract class Payment {
+        private final String type;
+        protected final double amount;
 
-    public void deposit(double amount) {
-        if (amount <= 0) {
-            System.out.println("Deposit rejected: amount must be greater than 0");
-            return;
+        Payment(String type, double amount) {
+            this.type = type;
+            this.amount = amount;
         }
-        savings += amount;
-    }
 
-    public void withdraw(double amount) {
-        if (amount <= 0) {
-            System.out.println("Withdraw rejected: amount must be greater than 0");
-            return;
+        String getType() {
+            return type;
         }
-        if (amount > savings) {
-            System.out.println("Withdraw rejected: not enough savings");
-            return;
+
+        abstract double calculateFinalAmount();
+    }
+
+    static class CardPayment extends Payment {
+        CardPayment(double amount) {
+            super("CARD", amount);
         }
-        savings -= amount;
+
+        @Override
+        double calculateFinalAmount() {
+            return amount + amount * 0.02;   // 2% fee
+        }
     }
 
-    public double getSavings() {
-        return savings;
+    static class WalletPayment extends Payment {
+        WalletPayment(double amount) {
+            super("WALLET", amount);
+        }
+
+        @Override
+        double calculateFinalAmount() {
+            return amount + amount * 0.01;   // 1% fee
+        }
     }
 
-    public String getId() {
-        return id;
-    }
-}
+    static class BankTransferPayment extends Payment {
+        BankTransferPayment(double amount) {
+            super("BANKTRANSFER", amount);
+        }
 
- class P1_PiggyBank {
+        @Override
+        double calculateFinalAmount() {
+            return amount;                   // no fee
+        }
+    }
+
+    static Payment createPayment(String type, double amount) {
+        switch (type) {
+            case "CARD":
+                return new CardPayment(amount);
+            case "WALLET":
+                return new WalletPayment(amount);
+            case "BANKTRANSFER":
+                return new BankTransferPayment(amount);
+            default:
+                throw new IllegalArgumentException("Unknown payment type: " + type);
+        }
+    }
+
     public static void main(String[] args) {
-        PiggyBank pb = new PiggyBank("PB-1");
-        System.out.println("Start: savings = " + pb.getSavings());
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
 
-        pb.deposit(100);
-        System.out.println("deposit(100) -> savings = " + pb.getSavings());
+        List<Payment> payments = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            String type = sc.next();
+            double amount = sc.nextDouble();
+            payments.add(createPayment(type, amount));
+        }
 
-        pb.withdraw(30);
-        System.out.println("withdraw(30) -> savings = " + pb.getSavings());
-
-        pb.withdraw(500);
-        System.out.println("withdraw(500) -> savings stays " + pb.getSavings());
+        double grandTotal = 0;
+        for (Payment p : payments) {
+            double adjusted = p.calculateFinalAmount();   // polymorphic call
+            System.out.println(String.format(Locale.US, "%s: %.2f", p.getType(), adjusted));
+            grandTotal += adjusted;
+        }
+        System.out.println(String.format(Locale.US, "Total: %.2f", grandTotal));
     }
 }

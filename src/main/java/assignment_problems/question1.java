@@ -1,50 +1,92 @@
 package assignment_problems;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.Scanner;
+
 public class question1 {
-}
-class Character {
-    private final int maxHealth;   // fixed at creation
-    private int health;            // private, no setter
 
-    public Character(int maxHealth) {
-        this.maxHealth = maxHealth;
-        this.health = maxHealth;
-    }
+    static abstract class Customer {
+        private final String type;
+        protected final double amount;
 
-    public void takeDamage(int amount) {
-        if (amount < 0) {
-            System.out.println("Damage rejected: amount cannot be negative");
-            return;
+        Customer(String type, double amount) {
+            this.type = type;
+            this.amount = amount;
         }
-        int newHealth = health - amount;        // calculate first...
-        health = Math.max(newHealth, 0);        // ...then clamp at 0
-    }
 
-    public void heal(int amount) {
-        if (amount < 0) {
-            System.out.println("Heal rejected: amount cannot be negative");
-            return;
+        String getType() {
+            return type;
         }
-        int newHealth = health + amount;        // calculate first...
-        health = Math.min(newHealth, maxHealth); // ...then clamp at max
+
+        abstract double calculateFinalAmount();
     }
 
-    public int getHealth() {
-        return health;
-    }
-}
+    static class Student extends Customer {
+        Student(double amount) {
+            super("STUDENT", amount);
+        }
 
- class A1_Character {
+        @Override
+        double calculateFinalAmount() {
+            return amount - amount * 0.10;
+        }
+    }
+
+    static class Staff extends Customer {
+        Staff(double amount) {
+            super("STAFF", amount);
+        }
+
+        @Override
+        double calculateFinalAmount() {
+            return amount - amount * 0.05;
+        }
+    }
+
+    static class Guest extends Customer {
+        Guest(double amount) {
+            super("GUEST", amount);
+        }
+
+        @Override
+        double calculateFinalAmount() {
+            return amount + 10;
+        }
+    }
+
+    // The only place the type string is looked at: building the right object
+    static Customer createCustomer(String type, double amount) {
+        switch (type) {
+            case "STUDENT":
+                return new Student(amount);
+            case "STAFF":
+                return new Staff(amount);
+            case "GUEST":
+                return new Guest(amount);
+            default:
+                throw new IllegalArgumentException("Unknown customer type: " + type);
+        }
+    }
+
     public static void main(String[] args) {
-        Character c = new Character(100);
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
 
-        c.takeDamage(30);
-        System.out.println("takeDamage(30) -> health = " + c.getHealth());
+        List<Customer> bills = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            String type = sc.next();
+            double amount = sc.nextDouble();
+            bills.add(createCustomer(type, amount));
+        }
 
-        c.heal(50);
-        System.out.println("heal(50) -> health = " + c.getHealth() + " (capped)");
-
-        c.takeDamage(150);
-        System.out.println("takeDamage(150) -> health = " + c.getHealth() + " (floored)");
+        double grandTotal = 0;
+        for (Customer c : bills) {
+            double finalAmount = c.calculateFinalAmount();   // polymorphic call
+            System.out.println(String.format(Locale.US, "%s: %.2f", c.getType(), finalAmount));
+            grandTotal += finalAmount;
+        }
+        System.out.println(String.format(Locale.US, "Total: %.2f", grandTotal));
     }
 }

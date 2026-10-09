@@ -1,50 +1,95 @@
 package class_problems;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.Scanner;
+
 public class question5 {
-}
-class AttendanceSheet {
-    private final String[] present;   // private, never returned
-    private int count = 0;
 
-    public AttendanceSheet(int maxClassSize) {
-        this.present = new String[maxClassSize];
-    }
+    static abstract class Journey {
+        private final String type;
+        protected final double distance;
 
-    public void markPresent(String name) {
-        if (isPresent(name)) {
-            return;                   // already marked, no duplicates
+        Journey(String type, double distance) {
+            this.type = type;
+            this.distance = distance;
         }
-        if (count >= present.length) {
-            System.out.println("Cannot mark " + name + ": class is full");
-            return;
+
+        String getType() {
+            return type;
         }
-        present[count] = name;
-        count++;
+
+        abstract double calculateFare();
     }
 
-    public int getPresentCount() {
-        return count;
-    }
-
-    public boolean isPresent(String name) {
-        for (int i = 0; i < count; i++) {
-            if (present[i].equals(name)) {
-                return true;
-            }
+    static class BusJourney extends Journey {
+        BusJourney(double distance) {
+            super("BUS", distance);
         }
-        return false;
-    }
-}
 
- class P5_AttendanceSheet {
+        @Override
+        double calculateFare() {
+            return Math.min(2.0 + 0.10 * distance, 10.0);   // capped at $10
+        }
+    }
+
+    static class TrainJourney extends Journey {
+        TrainJourney(double distance) {
+            super("TRAIN", distance);
+        }
+
+        @Override
+        double calculateFare() {
+            return 3.0 + 0.15 * distance;
+        }
+    }
+
+    static class MetroJourney extends Journey {
+        private final double peakHourFactor;   // extra value lives in the subclass
+
+        MetroJourney(double distance, double peakHourFactor) {
+            super("METRO", distance);
+            this.peakHourFactor = peakHourFactor;
+        }
+
+        @Override
+        double calculateFare() {
+            return (1.50 + 0.20 * distance) * peakHourFactor;
+        }
+    }
+
+    // Reads the rest of one line, including PeakHourFactor for METRO
+    static Journey createJourney(String type, Scanner sc) {
+        double distance = sc.nextDouble();
+        switch (type) {
+            case "BUS":
+                return new BusJourney(distance);
+            case "TRAIN":
+                return new TrainJourney(distance);
+            case "METRO":
+                return new MetroJourney(distance, sc.nextDouble());
+            default:
+                throw new IllegalArgumentException("Unknown transport type: " + type);
+        }
+    }
+
     public static void main(String[] args) {
-        AttendanceSheet sheet = new AttendanceSheet(30);
-        sheet.markPresent("Ana");
-        sheet.markPresent("Ben");
-        sheet.markPresent("Ana");
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
 
-        System.out.println("getPresentCount() -> " + sheet.getPresentCount());
-        System.out.println("isPresent(\"Ben\") -> " + sheet.isPresent("Ben"));
-        System.out.println("isPresent(\"Chen\") -> " + sheet.isPresent("Chen"));
+        List<Journey> journeys = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            String type = sc.next();
+            journeys.add(createJourney(type, sc));
+        }
+
+        double grandTotal = 0;
+        for (Journey j : journeys) {
+            double fare = j.calculateFare();   // polymorphic call
+            System.out.println(String.format(Locale.US, "%s: %.2f", j.getType(), fare));
+            grandTotal += fare;
+        }
+        System.out.println(String.format(Locale.US, "Total: %.2f", grandTotal));
     }
 }

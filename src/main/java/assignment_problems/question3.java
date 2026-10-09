@@ -1,38 +1,95 @@
 package assignment_problems;
 
-public class question3 {
-}
-class PasswordChecker {
-    private final String password;   // final: cannot change; no getter exposes it
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.Scanner;
 
-    public PasswordChecker(String password) {
-        this.password = password;
+public class question3 {
+
+    static abstract class Room {
+        private final String type;
+        protected final int units;
+
+        Room(String type, int units) {
+            this.type = type;
+            this.units = units;
+        }
+
+        String getType() {
+            return type;
+        }
+
+        abstract double calculateBill();
     }
 
-    public String getStrength() {
-        int length = password.length();
-        if (length < 6) {
-            return "Weak";
-        } else if (length < 10) {
-            return "Medium";
-        } else {
-            return "Strong";
+    static class SingleRoom extends Room {
+        SingleRoom(int units) {
+            super("SINGLE", units);
+        }
+
+        @Override
+        double calculateBill() {
+            return 8.0 * units;
         }
     }
-}
 
-class A3_PasswordChecker {
+    static class SharedRoom extends Room {
+        private final int occupants;   // extra value lives in the subclass
+
+        SharedRoom(int units, int occupants) {
+            super("SHARED", units);
+            this.occupants = occupants;
+        }
+
+        @Override
+        double calculateBill() {
+            return (6.0 * units) / occupants;
+        }
+    }
+
+    static class AcRoom extends Room {
+        AcRoom(int units) {
+            super("AC", units);
+        }
+
+        @Override
+        double calculateBill() {
+            return 10.0 * units + 200.0;
+        }
+    }
+
+    // Reads the rest of one line, including the extra occupants value for SHARED
+    static Room createRoom(String type, Scanner sc) {
+        int units = sc.nextInt();
+        switch (type) {
+            case "SINGLE":
+                return new SingleRoom(units);
+            case "SHARED":
+                return new SharedRoom(units, sc.nextInt());
+            case "AC":
+                return new AcRoom(units);
+            default:
+                throw new IllegalArgumentException("Unknown room type: " + type);
+        }
+    }
+
     public static void main(String[] args) {
-        PasswordChecker pc = new PasswordChecker("abcd");
-        System.out.println("abcd (4 chars) -> " + pc.getStrength());
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
 
-        PasswordChecker medium = new PasswordChecker("abcdefgh");
-        System.out.println("abcdefgh (8 chars) -> " + medium.getStrength());
+        List<Room> rooms = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            String type = sc.next();
+            rooms.add(createRoom(type, sc));
+        }
 
-        PasswordChecker pc2 = new PasswordChecker("abcdefghij");
-        System.out.println("abcdefghij (10 chars) -> " + pc2.getStrength());
-
-        PasswordChecker twelve = new PasswordChecker("abcdefghijkl");
-        System.out.println("abcdefghijkl (12 chars) -> " + twelve.getStrength());
+        double grandTotal = 0;
+        for (Room r : rooms) {
+            double bill = r.calculateBill();   // polymorphic call
+            System.out.println(String.format(Locale.US, "%s: %.2f", r.getType(), bill));
+            grandTotal += bill;
+        }
+        System.out.println(String.format(Locale.US, "Total: %.2f", grandTotal));
     }
 }

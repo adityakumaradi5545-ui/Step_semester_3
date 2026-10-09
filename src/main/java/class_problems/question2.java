@@ -1,49 +1,108 @@
 package class_problems;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 public class question2 {
-}
-class Scorecard {
-    private final boolean[] results;   // private, never returned in any form
-    private final int totalQuestions;  // fixed at creation
-    private int recorded = 0;          // how many answers recorded so far
 
-    public Scorecard(int totalQuestions) {
-        this.totalQuestions = totalQuestions;
-        this.results = new boolean[totalQuestions];
-    }
+    // The problem fixes "today" for simplicity
+    static final LocalDate CURRENT_DATE = LocalDate.of(2023, 10, 26);
 
-    public void recordAnswer(boolean correct) {
-        if (recorded >= totalQuestions) {
-            System.out.println("Answer rejected: all " + totalQuestions + " questions already recorded");
-            return;
+    static abstract class LibraryItem {
+        private final String title;
+
+        LibraryItem(String title) {
+            this.title = title;
         }
-        results[recorded] = correct;
-        recorded++;
+
+        String getTitle() {
+            return title;
+        }
+
+        abstract int borrowingDays();
+
+        LocalDate calculateDueDate(LocalDate today) {
+            return today.plusDays(borrowingDays());
+        }
     }
 
-    // Only a number computed from the array leaves the class
-    public int getScore() {
-        int score = 0;
-        for (int i = 0; i < recorded; i++) {
-            if (results[i]) {
-                score++;
+    static class Book extends LibraryItem {
+        Book(String title) {
+            super(title);
+        }
+
+        @Override
+        int borrowingDays() {
+            return 14;
+        }
+    }
+
+    static class Dvd extends LibraryItem {
+        Dvd(String title) {
+            super(title);
+        }
+
+        @Override
+        int borrowingDays() {
+            return 7;
+        }
+    }
+
+    static class Magazine extends LibraryItem {
+        Magazine(String title) {
+            super(title);
+        }
+
+        @Override
+        int borrowingDays() {
+            return 3;
+        }
+    }
+
+    static LibraryItem createItem(String type, String title) {
+        switch (type) {
+            case "BOOK":
+                return new Book(title);
+            case "DVD":
+                return new Dvd(title);
+            case "MAGAZINE":
+                return new Magazine(title);
+            default:
+                throw new IllegalArgumentException("Unknown item type: " + type);
+        }
+    }
+
+    // Reads the next non-empty line
+    static String nextLine(BufferedReader br) throws IOException {
+        String line = br.readLine();
+        while (line != null && line.trim().isEmpty()) {
+            line = br.readLine();
+        }
+        return line;
+    }
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(nextLine(br).trim());
+
+        List<LibraryItem> items = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            String line = nextLine(br).trim();
+            int space = line.indexOf(' ');
+            String type = line.substring(0, space);
+            String title = line.substring(space + 1).trim();
+            if (title.length() >= 2 && title.startsWith("\"") && title.endsWith("\"")) {
+                title = title.substring(1, title.length() - 1);   // remove the quotes
             }
+            items.add(createItem(type, title));
         }
-        return score;
-    }
-}
 
- class P2_Scorecard {
-    public static void main(String[] args) {
-        Scorecard sc = new Scorecard(4);
-        sc.recordAnswer(true);
-        sc.recordAnswer(true);
-        sc.recordAnswer(false);
-        sc.recordAnswer(true);
-
-        System.out.println("getScore() -> " + sc.getScore());
-
-        sc.recordAnswer(true);  // extra answer: rejected
-        System.out.println("getScore() after extra answer -> " + sc.getScore());
+        for (LibraryItem item : items) {
+            System.out.println(item.getTitle() + ": " + item.calculateDueDate(CURRENT_DATE));   // polymorphic
+        }
     }
 }
