@@ -1,45 +1,31 @@
 package class_problem;
-import java.util.Scanner;
+
 public class question5 {
+}
+class Student {
+    String name;
+    int attendance;
 
+    static String collegeName = "SRM Institute of Science and Technology";
+    static int studentCount = 0;
 
-
-
-        // Method to reverse the customer name
-        static String reverseCustomerName(String customerName) {
-
-            char[] arr = customerName.toCharArray();
-
-            int left = 0;
-            int right = arr.length - 1;
-
-            // Reverse the character array
-            while (left < right) {
-
-                char temp = arr[left];
-                arr[left] = arr[right];
-                arr[right] = temp;
-
-                left++;
-                right--;
-            }
-
-            return new String(arr);
-        }
-
-        public static void main(String[] args) {
-
-            Scanner sc = new Scanner(System.in);
-
-            System.out.print("Enter customer name: ");
-            String customerName = sc.nextLine();
-
-            String reversedName = reverseCustomerName(customerName);
-
-            System.out.println("Original Name: " + customerName);
-            System.out.println("Reversed Name: " + reversedName);
-
-            sc.close();
-        }
+    Student(String name, int attendance) {
+        this.name = name;
+        this.attendance = attendance;
+        studentCount++;
     }
 
+    static void printCollegeInfo() {
+        System.out.println(collegeName);
+        System.out.println("Students created: " + studentCount);
+    }
+}
+
+ class M5_Student {
+    public static void main(String[] args) {
+        Student s1 = new Student("Ravi", 90);
+        Student s2 = new Student("Anitha", 95);
+
+        Student.printCollegeInfo();
+    }
+}

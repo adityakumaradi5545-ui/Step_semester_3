@@ -1,48 +1,27 @@
 package class_problem;
-import java.util.Scanner;
+
 public class question4 {
+}
+class IdCard {
+    String name;
+    int booksIssued;
 
-
-
-
-        static char findFirstNonRepeatingChar(String text) {
-
-            // Array to store frequency of characters
-            int[] frequency = new int[256];
-
-            // Count frequency
-            for (int i = 0; i < text.length(); i++) {
-                frequency[text.charAt(i)]++;
-            }
-
-            // Find first character with frequency 1
-            for (int i = 0; i < text.length(); i++) {
-                if (frequency[text.charAt(i)] == 1) {
-                    return text.charAt(i);
-                }
-            }
-
-            // No non-repeating character
-            return '\0';
-        }
-
-        public static void main(String[] args) {
-
-            Scanner sc = new Scanner(System.in);
-
-            System.out.print("Enter a string: ");
-            String text = sc.nextLine();
-
-            char result = findFirstNonRepeatingChar(text);
-
-            if (result == '\0') {
-                System.out.println("No Non-Repeating Character Found");
-            } else {
-                System.out.println("First Non-Repeating Character: '"
-                        + result + "'");
-            }
-
-            sc.close();
-        }
+    IdCard(String name, int booksIssued) {
+        this.name = name;
+        this.booksIssued = booksIssued;
     }
+}
 
+class M4_IdCard {
+    public static void main(String[] args) {
+        IdCard ravi = new IdCard("Ravi", 0);
+        IdCard duplicate = ravi;          // same object, not a new one
+        duplicate.booksIssued = 3;        // change via second reference
+
+        IdCard separate = new IdCard("Ravi", 3);  // different object, same values
+
+        System.out.println("Ravi's booksIssued (via first variable): " + ravi.booksIssued);
+        System.out.println("duplicate == ravi: " + (duplicate == ravi));
+        System.out.println("separate == ravi: " + (separate == ravi));
+    }
+}

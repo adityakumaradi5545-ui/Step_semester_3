@@ -1,92 +1,49 @@
 package class_problem;
 
-import java.util.Scanner;
-
 public class question2 {
-    // 1. Iterative approach
-    static boolean isPalindromeIterative(String text) {
-        int left = 0;
-        int right = text.length() - 1;
+}
+class MessWallet {
+    private double balance;
 
-        while (left < right) {
-            if (text.charAt(left) != text.charAt(right)) {
-                return false;
-            }
-
-            left++;
-            right--;
+    public MessWallet(double openingBalance) {
+        if (openingBalance < 0) {
+            System.out.println("Warning: negative opening balance. Starting at 0.");
+            this.balance = 0;
+        } else {
+            this.balance = openingBalance;
         }
-
-        return true;
     }
 
-    // 2. Recursive approach
-    static boolean isPalindromeRecursive(String text) {
-        return checkRecursive(text, 0, text.length() - 1);
+    public void topUp(double amount) {
+        if (amount <= 0) {
+            System.out.println("Top-up rejected: amount must be greater than 0");
+            return;
+        }
+        balance += amount;
     }
 
-    static boolean checkRecursive(String text, int left, int right) {
-
-        // Base case
-        if (left >= right) {
-            return true;
+    public void deduct(double amount) {
+        if (amount > balance) {
+            System.out.println("Deduct rejected: insufficient balance");
+            return;
         }
-
-        // If characters don't match
-        if (text.charAt(left) != text.charAt(right)) {
-            return false;
-        }
-
-        // Recursive call
-        return checkRecursive(text, left + 1, right - 1);
+        balance -= amount;
     }
 
-    // 3. Array reversal approach
-    static boolean isPalindromeArrayReversal(String text) {
-
-        char[] arr = text.toCharArray();
-
-        // Reverse the array
-        int left = 0;
-        int right = arr.length - 1;
-
-        while (left < right) {
-            char temp = arr[left];
-            arr[left] = arr[right];
-            arr[right] = temp;
-
-            left++;
-            right--;
-        }
-
-        String reversed = new String(arr);
-
-        return text.equals(reversed);
-    }
-
-    public static void main(String[] args) {
-
-        Scanner sc = new Scanner(System.in);
-
-        System.out.print("Enter text: ");
-        String text = sc.nextLine();
-
-        boolean iterative = isPalindromeIterative(text);
-        boolean recursive = isPalindromeRecursive(text);
-        boolean arrayReversal = isPalindromeArrayReversal(text);
-
-        System.out.println();
-
-        System.out.println("Iterative: " +
-                (iterative ? "Palindrome" : "Not Palindrome"));
-
-        System.out.println("Recursive: " +
-                (recursive ? "Palindrome" : "Not Palindrome"));
-
-        System.out.println("Array Reversal: " +
-                (arrayReversal ? "Palindrome" : "Not Palindrome"));
-
-        sc.close();
+    public double getBalance() {
+        return balance;
     }
 }
 
+class M2_MessWallet {
+    public static void main(String[] args) {
+        MessWallet wallet = new MessWallet(500);
+
+        wallet.topUp(200);
+        System.out.println("Balance after top-up: " + wallet.getBalance());
+
+        wallet.deduct(1000);
+
+        System.out.println("Final balance: " + wallet.getBalance());
+    }
+}

@@ -1,72 +1,36 @@
 package class_problem;
-import java.util.Scanner;
+
 public class question3 {
+}
+class Course {
+    String code;
+    String title;
+    int credits;
+    int labCredits;
 
-
-
-
-        // Method to classify BMI
-        static String getBmiStatus(double bmi) {
-
-            if (bmi < 18.5) {
-                return "Underweight";
-            }
-            else if (bmi < 25) {
-                return "Normal";
-            }
-            else if (bmi < 30) {
-                return "Overweight";
-            }
-            else {
-                return "Obese";
-            }
-        }
-
-        // Method to print wellness report
-        static void printWellnessReport(double[] heights, double[] weights) {
-
-            System.out.println("\n---------------- WELLNESS REPORT ----------------");
-            System.out.printf("%-10s %-12s %-12s %-10s %-15s%n",
-                    "Person", "Height(m)", "Weight(kg)", "BMI", "Status");
-
-            for (int i = 0; i < heights.length; i++) {
-
-                double bmi = weights[i] / (heights[i] * heights[i]);
-
-                String status = getBmiStatus(bmi);
-
-                System.out.printf("%-10d %-12.2f %-12.2f %-10.2f %-15s%n",
-                        i + 1, heights[i], weights[i], bmi, status);
-            }
-
-            System.out.println("--------------------------------------------------");
-        }
-
-        public static void main(String[] args) {
-
-            Scanner sc = new Scanner(System.in);
-
-            int n = 10;
-
-            double[] heights = new double[n];
-            double[] weights = new double[n];
-
-            // Input height and weight
-            for (int i = 0; i < n; i++) {
-
-                System.out.println("\nPerson " + (i + 1));
-
-                System.out.print("Enter height in meters: ");
-                heights[i] = sc.nextDouble();
-
-                System.out.print("Enter weight in kg: ");
-                weights[i] = sc.nextDouble();
-            }
-
-            // Print final report
-            printWellnessReport(heights, weights);
-
-            sc.close();
-        }
+    public Course(String code, String title, int credits, int labCredits) {
+        this.code = code;
+        this.title = title;
+        this.credits = credits;
+        this.labCredits = labCredits;
     }
 
+    // Theory-only course: chains to the 4-arg constructor with labCredits = 0
+    public Course(String code, String title, int credits) {
+        this(code, title, credits, 0);
+    }
+
+    public int totalCredits() {
+        return credits + labCredits;
+    }
+}
+
+class M3_Course {
+    public static void main(String[] args) {
+        Course theory = new Course("21CSC201J", "Data Structures", 4);
+        Course lab = new Course("21CSC205L", "DSA Lab", 3, 1);
+
+        System.out.println(theory.code + " total credits: " + theory.totalCredits());
+        System.out.println(lab.code + " total credits: " + lab.totalCredits());
+    }
+}
